@@ -6,7 +6,7 @@ class BottomNavBar extends StatelessWidget {
     return Container(
       color: Color(0xFF2B2B2B), // Set the background color of the navbar
       child: BottomNavigationBar(
-        backgroundColor: Colors.transparent, // Make background transparent
+        backgroundColor: const Color(0xFF2B2B2B), // Make background transparent
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home, color: Colors.white),

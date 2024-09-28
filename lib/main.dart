@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'screens/emergency_details.dart';
 import 'screens/home_screen.dart';
 
 void main() {
@@ -9,11 +10,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Emergency Vehicle Tracker',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: HomePage(), // Entry point for variant selection
+      debugShowCheckedModeBanner: false,
+      initialRoute: '/',
+      routes: {
+        '/': (context) => HomePage(), // Your main home page
+        '/emergencyDetails': (context) => EmergencyDetailsPage(), // The emergency details page
+      },
     );
   }
 }
