@@ -1,39 +1,110 @@
 import 'package:flutter/material.dart';
-import 'driver_screen.dart';
-import 'authority_screen.dart';
+import 'package:trafficmanagement/screens/widgets/weeks_emergencies_card.dart';
+import 'widgets/header_widget.dart';
+import 'widgets/emergency_task_card.dart';
+import 'widgets/emergency_category_card.dart';
+import 'widgets/bottom_nav_bar.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFF161616), // Set background color to black
       appBar: AppBar(
-        title: Text('Select User Role'),
+        backgroundColor: Colors.black,
+        title: HeaderWidget(),
       ),
-      body: Center(
+      body: SingleChildScrollView(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => DriverScreen()),
-                );
-              },
-              child: Text('Driver'),
+          children: [
+            // Row for "Today's Emergency Tasks" and "VIEW ALL"
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                    "Today's Emergency Tasks",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      // Handle "VIEW ALL" click
+                    },
+                    child: const Text(
+                      "VIEW ALL",
+                      style: TextStyle(
+                        color: Colors.white70,
+                        fontSize: 12,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => AuthorityScreen()),
-                );
-              },
-              child: Text('Authority'),
+            EmergencyTaskCard(taskTitle: 'Set Destination', eta: 'Tomorrow, 9:00 AM'),
+        //Row for "This Week's Emergencies" and "VIEW CALENDAR"
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "This Week's Emergencies",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    "VIEW CALENDAR",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 12,
+                    ),
+                  ),
+                ],
+              ),
             ),
+            const SizedBox(height: 10),
+            WeeksEmergencyTaskCard(
+                taskTitle: 'Emergency Route Planning',
+                subtitle: 'Plan optimized routes for emergencies',
+                eta: 'Tomorrow, 9:00 AM'),
+            WeeksEmergencyTaskCard(
+                taskTitle: 'Respond to Emergency Calls',
+                subtitle: 'Immediate response to all emergency calls',
+                eta: 'Tomorrow, 9:00 AM'),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Emergency Categories",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            EmergencyCategoryCard(categoryTitle: 'Emergency Work', personImages: [
+              'assets/images/person1.png',
+              'assets/images/person2.png'
+            ]),
           ],
         ),
       ),
+      bottomNavigationBar: BottomNavBar(),
     );
   }
 }
