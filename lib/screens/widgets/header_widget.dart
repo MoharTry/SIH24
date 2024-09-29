@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:trafficmanagement/screens/live_map_page.dart';
 
 class HeaderWidget extends StatelessWidget {
+  const HeaderWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -20,13 +23,16 @@ class HeaderWidget extends StatelessWidget {
             ),
         ),
         IconButton(
-          onPressed: () {
-            // Define location button click behavior
-          },
           icon: const Icon(
             Icons.location_on,
             color: Colors.white,
           ),
+          onPressed:() {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => LiveMapPage()),
+            );
+          },
         ),
       ],
     );

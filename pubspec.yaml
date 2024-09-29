@@ -28,6 +28,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  carousel_slider: ^4.2.1
   flutter:
     sdk: flutter
 
@@ -64,6 +65,9 @@ flutter:
      - assets/images/person1.jpg
      - assets/images/person2.jpg
      - assets/images/person3.jpg
+     - assets/images/destination1.jpg
+     - assets/images/destination2.jpg
+     - assets/images/destination3.jpg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

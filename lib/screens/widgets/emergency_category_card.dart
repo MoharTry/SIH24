@@ -5,7 +5,7 @@ class EmergencyCategoryCard extends StatelessWidget {
   final String categoryTitle;
   final List<String> personImages;
 
-  EmergencyCategoryCard({required this.categoryTitle, required this.personImages});
+  const EmergencyCategoryCard({super.key, required this.categoryTitle, required this.personImages});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -13,10 +13,10 @@ class EmergencyCategoryCard extends StatelessWidget {
       // Width of the card
       height: 215,
       // Height of the card
-      margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+      margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
       // Spacing around the card
       decoration: BoxDecoration(
-        color: Color(0xFF2B2B2B), // Light grey background color
+        color: const Color(0xFF2B2B2B), // Light grey background color
         borderRadius: BorderRadius.circular(24), // Rounded corners
       ),
       child: Padding(

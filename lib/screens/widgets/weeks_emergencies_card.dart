@@ -5,16 +5,16 @@ class WeeksEmergencyTaskCard extends StatelessWidget {
   final String eta;
   final String subtitle;
 
-  WeeksEmergencyTaskCard({required this.taskTitle, required this.eta, required this.subtitle});
+  const WeeksEmergencyTaskCard({super.key, required this.taskTitle, required this.eta, required this.subtitle});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: 335, // Width of the card
       height: 115, // Height of the card
-      margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20), // Spacing around the card
+      margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20), // Spacing around the card
       decoration: BoxDecoration(
-        color: Color(0xFF2B2B2B), // Light grey background color
+        color: const Color(0xFF2B2B2B), // Light grey background color
         borderRadius: BorderRadius.circular(24), // Rounded corners
       ),
       child: Padding(
@@ -24,25 +24,25 @@ class WeeksEmergencyTaskCard extends StatelessWidget {
           children: [
             Text(
               taskTitle,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 14,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 4), // Space between title and subtitle
+            const SizedBox(height: 4), // Space between title and subtitle
             Text(
               subtitle,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.white70,
                 fontSize: 12,
                 fontWeight: FontWeight.normal,
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Text(
               "ETA: $eta",
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.white70,
                 fontSize: 10,
               ),

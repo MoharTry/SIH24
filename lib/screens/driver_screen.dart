@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
 class DriverScreen extends StatelessWidget {
+  const DriverScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Driver Screen'),
+        title: const Text('Driver Screen'),
       ),
       body: Stack(
         children: [
@@ -23,19 +25,19 @@ class DriverScreen extends StatelessWidget {
               Align(
                 alignment: Alignment.topLeft,
                 child: Container(
-                  padding: EdgeInsets.all(16.0),
-                  margin: EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.all(16.0),
+                  margin: const EdgeInsets.all(16.0),
                   decoration: BoxDecoration(
                     color: Colors.black54, // Semi-transparent background
                     borderRadius: BorderRadius.circular(8.0),
                   ),
-                  child: Text(
+                  child: const Text(
                     'Vehicle Type: Ambulance',
                     style: TextStyle(color: Colors.white, fontSize: 20),
                   ),
                 ),
               ),
-              Spacer(),
+              const Spacer(),
               // Bigger and fully rounded SOS button
               Padding(
                 padding: const EdgeInsets.all(16.0),
@@ -43,17 +45,17 @@ class DriverScreen extends StatelessWidget {
                   onPressed: () {
                     // Implement SOS functionality
                     ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('SOS Sent!')),
+                      const SnackBar(content: Text('SOS Sent!')),
                     );
                   },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.red, // Button color
+                    padding: const EdgeInsets.symmetric(vertical: 30.0, horizontal: 50.0), // Bigger button
+                    shape: const CircleBorder(), // Fully rounded button
+                  ),
                   child: Text(
                     'SOS',
                     style: TextStyle(color: Colors.white, fontSize: 24), // Set text color to white
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.red, // Button color
-                    padding: EdgeInsets.symmetric(vertical: 30.0, horizontal: 50.0), // Bigger button
-                    shape: CircleBorder(), // Fully rounded button
                   ),
                 ),
               ),

@@ -22,7 +22,7 @@ class EmergencyDetailsPage extends StatelessWidget {
         title: Row(
           children: [
             IconButton(
-              icon: Icon(Icons.arrow_back, color: Colors.white), // Set the icon color to white
+              icon: const Icon(Icons.arrow_back, color: Colors.white), // Set the icon color to white
               onPressed: () {
                 Navigator.pop(context);
               },
@@ -39,7 +39,7 @@ class EmergencyDetailsPage extends StatelessWidget {
               ),
             ),
             IconButton(
-              icon: Icon(Icons.search, color: Colors.white), // Set the icon color to white
+              icon: const Icon(Icons.search, color: Colors.white), // Set the icon color to white
               onPressed: () {
                 Navigator.push(
                   context,
@@ -55,7 +55,7 @@ class EmergencyDetailsPage extends StatelessWidget {
         children: [
           // Circular Avatar with static map
           const Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: EdgeInsets.all(16.0),
             child: CircleAvatar(
               radius: 100, // Adjust the radius as needed
               backgroundImage: AssetImage('assets/images/static_map.jpg'), // Your static map image
@@ -65,7 +65,7 @@ class EmergencyDetailsPage extends StatelessWidget {
           // Grid layout for 4 rows and 2 columns
           Expanded(
             child: GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2, // 2 columns
                 childAspectRatio: 1, // Aspect ratio for grid items
               ),
@@ -75,13 +75,13 @@ class EmergencyDetailsPage extends StatelessWidget {
                 return Container(
                   margin: const EdgeInsets.all(8.0),
                   decoration: BoxDecoration(
-                    color: Color(0xFF2B2B2B), // Background color of each cell
+                    color: const Color(0xFF2B2B2B), // Background color of each cell
                     borderRadius: BorderRadius.circular(12), // Rounded corners
                   ),
                   child: Center(
                     child: Text(
                       gridItems[index], // Use actual item data
-                      style: TextStyle(color: Colors.white),
+                      style: const TextStyle(color: Colors.white),
                     ),
                   ),
                 );
@@ -91,7 +91,7 @@ class EmergencyDetailsPage extends StatelessWidget {
 
           // Horizontal buttons
           const Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: EdgeInsets.all(16.0),
             child: Column(
               children: [
                 RoundedButton(text: 'Select'),
@@ -104,8 +104,8 @@ class EmergencyDetailsPage extends StatelessWidget {
           ),
         ],
       ),
-      bottomNavigationBar: BottomNavBar(),
-      backgroundColor: Color(0xFF161616), // Background color
+      bottomNavigationBar: BottomNavBar(currentIndex: 0),
+      backgroundColor: const Color(0xFF161616), // Background color
     );
   }
 }
@@ -113,7 +113,7 @@ class EmergencyDetailsPage extends StatelessWidget {
 class RoundedButton extends StatelessWidget {
   final String text;
 
-  const RoundedButton({Key? key, required this.text}) : super(key: key);
+  const RoundedButton({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -124,7 +124,7 @@ class RoundedButton extends StatelessWidget {
           // Handle button press
         },
         style: ElevatedButton.styleFrom(
-          backgroundColor: Color(0xFF2B2B2B), // Button background color
+          backgroundColor: const Color(0xFF2B2B2B), // Button background color
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30), // Rounded corners
           ),
@@ -133,7 +133,7 @@ class RoundedButton extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 16.0),
           child: Text(
             text,
-            style: TextStyle(color: Colors.white, fontSize: 16),
+            style: const TextStyle(color: Colors.white, fontSize: 16),
           ),
         ),
       ),

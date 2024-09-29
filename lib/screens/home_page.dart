@@ -6,11 +6,14 @@ import 'widgets/emergency_category_card.dart';
 import 'widgets/bottom_nav_bar.dart';
 
 class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF161616), // Set background color to black
+      backgroundColor: const Color(0xFF161616), // Set background color to black
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.black,
         title: HeaderWidget(),
       ),
@@ -97,14 +100,14 @@ class HomePage extends StatelessWidget {
                 ],
               ),
             ),
-            EmergencyCategoryCard(categoryTitle: 'Emergency Work', personImages: [
+            EmergencyCategoryCard(categoryTitle: 'Emergency Work', personImages: const [
               'assets/images/person1.png',
               'assets/images/person2.png'
             ]),
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavBar(),
+      bottomNavigationBar: BottomNavBar(currentIndex: 0),
     );
   }
 }

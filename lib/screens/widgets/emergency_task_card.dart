@@ -4,16 +4,16 @@ class EmergencyTaskCard extends StatelessWidget {
   final String taskTitle;
   final String eta;
 
-  EmergencyTaskCard({required this.taskTitle, required this.eta});
+  const EmergencyTaskCard({super.key, required this.taskTitle, required this.eta});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: 335, // Width of the card
       height: 160, // Height of the card
-      margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20), // Spacing around the card
+      margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20), // Spacing around the card
       decoration: BoxDecoration(
-        color: Color(0xFF2B2B2B), // Exact color tone for the background
+        color: const Color(0xFF2B2B2B), // Exact color tone for the background
         borderRadius: BorderRadius.circular(24), // Rounded corners
       ),
       child: Padding(

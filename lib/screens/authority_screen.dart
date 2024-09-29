@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
 class AuthorityScreen extends StatelessWidget {
+  const AuthorityScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Authority Screen'),
+        title: const Text('Authority Screen'),
       ),
       body: Stack(
         children: [
@@ -20,17 +22,17 @@ class AuthorityScreen extends StatelessWidget {
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Spacer(), // Pushes the following content to the bottom
+              const Spacer(), // Pushes the following content to the bottom
               // Bottom Centered Text Box
               Container(
                 width: double.infinity, // Stretch to full width
-                margin: EdgeInsets.all(16.0),
-                padding: EdgeInsets.all(16.0),
+                margin: const EdgeInsets.all(16.0),
+                padding: const EdgeInsets.all(16.0),
                 decoration: BoxDecoration(
                   color: Colors.black54, // Semi-transparent background
                   borderRadius: BorderRadius.circular(8.0),
                 ),
-                child: Column(
+                child: const Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     // Heading
