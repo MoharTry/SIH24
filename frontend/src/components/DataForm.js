@@ -1,62 +1,84 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { Container, Form, Button, Row, Col } from 'react-bootstrap';
-import './DataForm.css';
-
+import React, { useState } from "react";
+import axios from "axios";
+import {
+  Container,
+  Form,
+  Button,
+  Row,
+  Col,
+  Tooltip,
+  OverlayTrigger,
+} from "react-bootstrap";
+import "./DataForm.css";
 
 const DataForm = () => {
   const [formData, setFormData] = useState({
-    region: '',
-    age: '',
-    gender: 'male',
-    occupation: '',
-    income: '',
-    farmingCycle: 'sowing',
+    region: "",
+    age: "",
+    gender: "male",
+    occupation: "",
+    income: "",
+    farmingCycle: "sowing",
     financialProductsInterest: [],
     children: 0,
     elderly: 0,
     dependents: 0,
-    educationLevel: '',
-    economicActivity: '',
+    educationLevel: "",
+    economicActivity: "",
     propertyOwnership: false,
     seniorCitizen: false,
-    phone: '',
-    email: '',
-    preferredCommunicationMethod: 'email',
+    phone: "",
+    email: "",
+    preferredCommunicationMethod: "email",
   });
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData({
       ...formData,
-      [name]: type === 'checkbox' ? checked : value,
+      [name]: type === "checkbox" ? checked : value,
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    axios
-      .post('http://localhost:5000/api/data', formData)
-      .then(() => alert('Data submitted successfully'))
-      .catch((error) => console.error('Error submitting data:', error));
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/data",
+        formData
+      );
+      alert("Data submitted successfully: " + response.data);
+    } catch (error) {
+      console.error("Error submitting data:", error);
+      alert("Error submitting data: " + error.message);
+    }
   };
 
+  const renderTooltip = (props) => (
+    <Tooltip id="button-tooltip" {...props}>
+      This field is required.
+    </Tooltip>
+  );
+
   return (
-    <Container className="mt-5">
+    <Container className="data-form mt-5">
       <h2 className="mb-4 text-center">Financial Needs Assessment</h2>
       <Form onSubmit={handleSubmit}>
         <Row>
           <Col md={6}>
-            <Form.Group controlId="region">
-              <Form.Label>Region</Form.Label>
-              <Form.Control
-                type="text"
-                name="region"
-                placeholder="Enter Region"
-                value={formData.region}
-                onChange={handleChange}
-              />
-            </Form.Group>
+            <OverlayTrigger placement="top" overlay={renderTooltip}>
+              <Form.Group controlId="region">
+                <Form.Label>Region</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="region"
+                  placeholder="Enter Region"
+                  value={formData.region}
+                  onChange={handleChange}
+                  required
+                />
+              </Form.Group>
+            </OverlayTrigger>
           </Col>
           <Col md={6}>
             <Form.Group controlId="age">
@@ -67,6 +89,7 @@ const DataForm = () => {
                 placeholder="Enter Age"
                 value={formData.age}
                 onChange={handleChange}
+                required
               />
             </Form.Group>
           </Col>
@@ -81,6 +104,7 @@ const DataForm = () => {
                 name="gender"
                 value={formData.gender}
                 onChange={handleChange}
+                required
               >
                 <option value="male">Male</option>
                 <option value="female">Female</option>
@@ -96,6 +120,7 @@ const DataForm = () => {
                 placeholder="Enter Occupation"
                 value={formData.occupation}
                 onChange={handleChange}
+                required
               />
             </Form.Group>
           </Col>
@@ -111,6 +136,7 @@ const DataForm = () => {
                 placeholder="Enter Income"
                 value={formData.income}
                 onChange={handleChange}
+                required
               />
             </Form.Group>
           </Col>
@@ -231,6 +257,7 @@ const DataForm = () => {
                 placeholder="Enter Phone Number"
                 value={formData.phone}
                 onChange={handleChange}
+                required
               />
             </Form.Group>
           </Col>
@@ -246,6 +273,7 @@ const DataForm = () => {
                 placeholder="Enter Email"
                 value={formData.email}
                 onChange={handleChange}
+                required
               />
             </Form.Group>
           </Col>
@@ -265,7 +293,9 @@ const DataForm = () => {
           </Col>
         </Row>
 
-        <Button variant="primary" type="submit">
+        <div className="mb-4"></div>
+
+        <Button variant="primary" type="submit" className="btn-lg w-100 mx-auto d-block">
           Submit
         </Button>
       </Form>
